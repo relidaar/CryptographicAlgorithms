@@ -23,23 +23,17 @@ namespace CryptographicAlgorithms
 
         public string Decode(string encryptedMessage)
         {
-            var filteredMessage = PrepareMessage(encryptedMessage);
+            var filteredMessage = encryptedMessage.Filter(_alphabet);
             var output = GetShiftedChars(filteredMessage, true);
             return string.Concat(output);
         }
 
         public string Encode(string message)
         {
-            var filteredMessage = PrepareMessage(message);
+            var filteredMessage = message.Filter(_alphabet);
             var output = GetShiftedChars(filteredMessage);
             return string.Concat(output);
         }
-
-        private IEnumerable<char> PrepareMessage(string message) =>
-            message
-            ?.ToUpper()
-            ?.Where(_alphabet.Contains)
-            ?? Enumerable.Empty<char>();
 
         private IEnumerable<char> GetShiftedChars(IEnumerable<char> message, bool decoding = false)
         {

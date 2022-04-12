@@ -21,26 +21,24 @@ namespace CryptographicAlgorithms
 
         public string Encode(string message)
         {
-            var filteredMessage = message?.ToUpper()?.Where(_alphabet.Contains) ?? Enumerable.Empty<char>();
-
-            var output = filteredMessage.Select(c =>
-            {
-                var index = (Array.IndexOf(_alphabet, c) + _shift).Mod(_alphabet.Length);
-                return _alphabet[index];
-            });
+            var filteredMessage = message.Filter(_alphabet);
+            var output = GetShiftedChars(filteredMessage);
             return string.Concat(output);
         }
 
         public string Decode(string encryptedMessage)
         {
-            var filteredMessage = encryptedMessage?.ToUpper()?.Where(_alphabet.Contains) ?? Enumerable.Empty<char>();
-
-            var output = filteredMessage.Select(c =>
-            {
-                var index = (Array.IndexOf(_alphabet, c) - _shift).Mod(_alphabet.Length);
-                return _alphabet[index];
-            });
+            var filteredMessage = encryptedMessage.Filter(_alphabet);
+            var output = GetShiftedChars(filteredMessage, true);
             return string.Concat(output);
         }
+
+        private IEnumerable<char> GetShiftedChars(IEnumerable<char> message, bool decoding = false) =>
+            message.Select(c =>
+            {
+                int shift = decoding ? -_shift : _shift;
+                var index = (Array.IndexOf(_alphabet, c) + shift).Mod(_alphabet.Length);
+                return _alphabet[index];
+            });
     }
 }

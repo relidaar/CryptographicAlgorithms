@@ -7,6 +7,17 @@ namespace CryptographicAlgorithms.Helpers
 {
     internal static class EncoderHelper
     {
+        public static IEnumerable<char> Filter(this string message, char[] alphabet, bool inLowerCase = false)
+        {
+            string value = inLowerCase 
+                ? message?.ToLower()
+                : message?.ToUpper();
+
+            return value
+                ?.Where(alphabet.Contains)
+                ?? Enumerable.Empty<char>();
+        }
+
         public static char[] GetCharacters(uint min, uint max) => 
             Enumerable
             .Range((int)min, (int)(max + 1 - min))
