@@ -17,17 +17,42 @@ namespace CryptographicAlgorithms
         public TrithemiusEncoder(uint shift, bool descendingShift = false)
         {
             _shift = shift;
+            _descendingShift = descendingShift;
             _alphabet = EncoderHelper.GenerateAlphabet();
         }
 
         public string Decode(string encryptedMessage)
         {
-            throw new NotImplementedException();
+            var filteredMessage = PrepareMessage(encryptedMessage);
+            var output = GetShiftedChars(filteredMessage, true);
+            return string.Concat(output);
         }
 
         public string Encode(string message)
         {
-            throw new NotImplementedException();
+            var filteredMessage = PrepareMessage(message);
+            var output = GetShiftedChars(filteredMessage);
+            return string.Concat(output);
+        }
+
+        private IEnumerable<char> PrepareMessage(string message) =>
+            message
+            ?.ToUpper()
+            ?.Where(_alphabet.Contains)
+            ?? Enumerable.Empty<char>();
+
+        private IEnumerable<char> GetShiftedChars(IEnumerable<char> message, bool decoding = false)
+        {
+            int shift = (int)_shift;
+            foreach (var c in message)
+            {
+                var index = (Array.IndexOf(_alphabet, c) + shift).Mod(_alphabet.Length);
+
+                int shiftChange = _descendingShift ? -1 : 1;
+                shift = decoding ? shift - shiftChange : shift + shiftChange;
+
+                yield return _alphabet[index];
+            }
         }
     }
 }
