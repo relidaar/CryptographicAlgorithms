@@ -10,18 +10,23 @@ using Xunit;
 
 namespace CryptographicAlgorithms.Tests
 {
-    using Encoder = CaesarEncoder;
-    public class CaesarEncoderTests
+    using Encoder = TrithemiusEncoder;
+    public class TrithemiusEncoderTests
     {
         #region Encode
         [Theory]
-        [InlineData("AbC", 1, "BCD")]
-        [InlineData("AbC", -1, "ZAB")]
-        [InlineData("AbC", 0, "ABC")]
-        public void Encode_ShouldReturnEncodedMessage(string message, int shift, string expected)
+        [InlineData("AbC", 1, false, "BDF")]
+        [InlineData("AbC", 0, false, "ACE")]
+        [InlineData("AbC", 1, true, "BBB")]
+        [InlineData("AbC", 0, true, "AAA")]
+        public void Encode_ShouldReturnEncodedMessage(
+            string message,
+            uint shift, 
+            bool descendingShift,
+            string expected)
         {
             // Arrange
-            IEncoder encoder = new Encoder(shift);
+            IEncoder encoder = new Encoder(shift, descendingShift);
 
             // Act
             string actual = encoder.Encode(message);
@@ -36,7 +41,7 @@ namespace CryptographicAlgorithms.Tests
             // Arrange
             IEncoder encoder = new Encoder(0);
             string message = "A9B%34C";
-            string expected = "ABC";
+            string expected = "ACE";
 
             // Act
             string actual = encoder.Encode(message);
@@ -61,16 +66,21 @@ namespace CryptographicAlgorithms.Tests
             Assert.Equal(expected, actual);
         }
         #endregion
-     
+
         #region Decode
         [Theory]
-        [InlineData("BcD", 1, "ABC")]
-        [InlineData("zAb", -1, "ABC")]
-        [InlineData("AbC", 0, "ABC")]
-        public void Decode_ShouldReturnEncodedMessage(string message, int shift, string expected)
+        [InlineData("AbC", 1, false, "BBB")]
+        [InlineData("AbC", 0, false, "AAA")]
+        [InlineData("AbC", 1, true, "BDF")]
+        [InlineData("AbC", 0, true, "ACE")]
+        public void Decode_ShouldReturnEncodedMessage(
+            string message,
+            uint shift,
+            bool descendingShift,
+            string expected)
         {
             // Arrange
-            IEncoder encoder = new Encoder(shift);
+            IEncoder encoder = new Encoder(shift, descendingShift);
 
             // Act
             string actual = encoder.Decode(message);
@@ -85,7 +95,7 @@ namespace CryptographicAlgorithms.Tests
             // Arrange
             IEncoder encoder = new Encoder(0);
             string message = "A9B%34C";
-            string expected = "ABC";
+            string expected = "AAA";
 
             // Act
             string actual = encoder.Decode(message);
