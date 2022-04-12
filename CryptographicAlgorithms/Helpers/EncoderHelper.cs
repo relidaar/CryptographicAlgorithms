@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace CryptographicAlgorithms.Helpers
+{
+    internal static class EncoderHelper
+    {
+        public static IEnumerable<char> GenerateAlphabet(uint n, int shift) =>
+            Enumerable.Range(0, (int)n).Select(x => (char)(x + shift));
+
+        public static string ReplaceAt(this string value, uint index, char newChar)
+        {
+            if (value == null || index >= value.Length) return value;
+
+            var builder = new StringBuilder(value);
+            builder[(int)index] = newChar;
+            return builder.ToString();
+        }
+
+        public static string GetBinary(this uint value)
+        {
+            if (value == 0) return null;
+
+            var output = new StringBuilder();
+            while (value != 0)
+            {
+                var remainder = value % 2;
+                value /= 2;
+                output.Append(remainder);
+            }
+
+            return output.ToString();
+        }
+
+        public static string GetBinary(this string data, uint width = 8, string separator = "")
+        {
+            if (data == null) return data;
+
+            var output = data.Select(c => Convert.ToString(c, 2).PadLeft((int)width, '0'));
+            return string.Join(separator, output);
+        }
+
+        public static string GetFractionalBinary(this double value)
+        {
+            if (value == 0) return "0";
+
+            var fractional = new StringBuilder();
+            while (fractional.Length < 8)
+            {
+                value *= 2;
+                fractional.Append((int)value);
+                value = value < 1 ? value : value - (int)value;
+            }
+
+            return fractional.ToString();
+        }
+
+        public static string Xor(this string first, string second)
+        {
+            if (first == null) return second;
+            if (second == null) return first;
+
+            var output = first.Zip(second, (c1, c2) => 
+                c1 == '1' && c2 == '0' || c1 == '0' && c1 == '1' ? '1' : '0');
+
+            return string.Concat(output);
+        }
+    }
+}
