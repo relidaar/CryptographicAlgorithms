@@ -7,8 +7,12 @@ namespace CryptographicAlgorithms.Helpers
 {
     internal static class EncoderHelper
     {
-        public static IEnumerable<char> GenerateAlphabet(uint n, int shift) =>
-            Enumerable.Range(0, (int)n).Select(x => (char)(x + shift));
+        public static char[] GetCharacters(uint min, uint max) => 
+            Enumerable
+            .Range((int)min, (int)(max + 1 - min))
+            .Select(x => (char)x).ToArray();
+
+        public static char[] GenerateAlphabet() => GetCharacters(65, 90);
 
         public static string ReplaceAt(this string value, uint index, char newChar)
         {
@@ -16,6 +20,7 @@ namespace CryptographicAlgorithms.Helpers
 
             var builder = new StringBuilder(value);
             builder[(int)index] = newChar;
+
             return builder.ToString();
         }
 
