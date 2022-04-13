@@ -71,5 +71,31 @@ namespace CryptographicAlgorithms.Tests
             Assert.Equal(message, actual);
         }
         #endregion
+
+        #region GetCharacters
+        [Theory]
+        [InlineData(65, 65, "A")]
+        [InlineData(65, 67, "ABC")]
+        public void GetCharacters_ShouldReturnSymbolsWithinSpecifiedBounds(uint min, uint max, string expected)
+        {
+            // Arrange
+            // Act
+            var actual = EncoderHelper.GetCharacters(min, max);
+
+            // Assert
+            Assert.Equal(expected.ToCharArray(), actual);
+        }
+
+        [Fact]
+        public void GetCharacters_ShouldReturnEmptyCollectionIfInvalidBounds()
+        {
+            // Arrange
+            // Act
+            var actual = EncoderHelper.GetCharacters(66, 65);
+
+            // Assert
+            Assert.Equal(string.Empty, actual);
+        }
+        #endregion
     }
 }
