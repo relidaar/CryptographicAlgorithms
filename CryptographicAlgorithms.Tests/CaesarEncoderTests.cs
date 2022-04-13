@@ -67,7 +67,7 @@ namespace CryptographicAlgorithms.Tests
         [InlineData("BcD", 1, "ABC")]
         [InlineData("zAb", -1, "ABC")]
         [InlineData("AbC", 0, "ABC")]
-        public void Decode_ShouldReturnEncodedMessage(string message, int shift, string expected)
+        public void Decode_ShouldReturnDecodedMessage(string message, int shift, string expected)
         {
             // Arrange
             IEncoder encoder = new Encoder(shift);

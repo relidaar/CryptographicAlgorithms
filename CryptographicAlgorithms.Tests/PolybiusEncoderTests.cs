@@ -83,7 +83,7 @@ namespace CryptographicAlgorithms.Tests
         [InlineData("ABC", "111213")]
         [InlineData("ENCRYPTEDKEYWORD", "15331342543544151425155452344214")]
         [InlineData("ENCRYPTEDEYWORD", "153313425435441514155452344214", 'K')]
-        public void Decode_ShouldReturnEncodedMessage(
+        public void Decode_ShouldReturnDecodedMessage(
             string expected,
             string message,
             char letterToRemove = 'J')

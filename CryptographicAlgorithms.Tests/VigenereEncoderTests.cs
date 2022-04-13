@@ -98,7 +98,7 @@ namespace CryptographicAlgorithms.Tests
         [InlineData("AbcD", "KEY", "QXET")]
         [InlineData("Vigenere", "KeY", "LEIUJGHA")]
         [InlineData("Some text", "SoMEkEY", "AAAAJAZB")]
-        public void Decode_ShouldReturnEncodedMessage(
+        public void Decode_ShouldReturnDecodedMessage(
             string message,
             string key,
             string expected)

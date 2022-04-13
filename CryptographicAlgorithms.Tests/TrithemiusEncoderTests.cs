@@ -73,7 +73,7 @@ namespace CryptographicAlgorithms.Tests
         [InlineData("AbC", 0, false, "AAA")]
         [InlineData("AbC", 1, true, "BDF")]
         [InlineData("AbC", 0, true, "ACE")]
-        public void Decode_ShouldReturnEncodedMessage(
+        public void Decode_ShouldReturnDecodedMessage(
             string message,
             uint shift,
             bool descendingShift,
