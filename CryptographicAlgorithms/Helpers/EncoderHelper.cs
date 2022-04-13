@@ -7,14 +7,24 @@ namespace CryptographicAlgorithms.Helpers
 {
     public static class EncoderHelper
     {
-        public static IEnumerable<char> Filter(this string message, char[] alphabet, bool inLowerCase = false)
+        public static IEnumerable<char> Filter(this string message, IEnumerable<char> alphabet, bool inLowerCase = false)
         {
-            string value = inLowerCase 
+            if (alphabet == null)
+                throw new ArgumentNullException("Alphabet cannot be null");
+
+            string value = inLowerCase
                 ? message?.ToLower()
                 : message?.ToUpper();
 
+            var changedAlphabet = alphabet.Select(c =>
+                inLowerCase
+                ? char.ToLower(c)
+                : char.ToUpper(c));
+
+            if (changedAlphabet.Any() == false) return value;
+
             return value
-                ?.Where(alphabet.Contains)
+                ?.Where(changedAlphabet.Contains)
                 ?? Enumerable.Empty<char>();
         }
 
