@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CryptographicAlgorithms.Helpers
 {
-    internal static class EncoderHelper
+    public static class EncoderHelper
     {
         public static IEnumerable<char> Filter(this string message, char[] alphabet, bool inLowerCase = false)
         {

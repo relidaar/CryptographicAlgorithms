@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CryptographicAlgorithms.Helpers
 {
-    internal static class MathHelper
+    public static class MathHelper
     {
         private static readonly Random _rnd = new Random();
 
