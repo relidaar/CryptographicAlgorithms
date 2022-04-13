@@ -97,5 +97,22 @@ namespace CryptographicAlgorithms.Tests
             Assert.Equal(string.Empty, actual);
         }
         #endregion
+
+        #region GenerateAlphabet
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void GenerateAlphabet_ShouldReturnAlphabetInSpecifiedCase(bool inLowerCase)
+        {
+            // Arrange
+            var letters = inLowerCase ? new char[] { 'a', 'z' } : new char[] { 'A', 'Z' };
+
+            // Act
+            var actual = EncoderHelper.GenerateAlphabet(inLowerCase);
+
+            // Assert
+            Assert.All(letters, c => actual.Contains(c));
+        }
+        #endregion
     }
 }

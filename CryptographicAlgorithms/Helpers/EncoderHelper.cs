@@ -33,7 +33,8 @@ namespace CryptographicAlgorithms.Helpers
             .Range((int)min, (int)(max + 1 - min))
             .Select(x => (char)x).ToArray();
 
-        public static char[] GenerateAlphabet() => GetCharacters(65, 90);
+        public static char[] GenerateAlphabet(bool inLowerCase = false) => 
+            inLowerCase ? GetCharacters(97, 122) : GetCharacters(65, 90);
 
         public static char[,] GenerateMatrix(this char[] alphabet)
         {
@@ -66,7 +67,6 @@ namespace CryptographicAlgorithms.Helpers
             }
             return dict;
         }
-
 
         public static string ReplaceAt(this string value, uint index, char newChar)
         {
