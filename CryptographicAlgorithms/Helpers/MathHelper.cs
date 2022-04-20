@@ -11,6 +11,7 @@ namespace CryptographicAlgorithms.Helpers
         private static readonly Random _rnd = new Random();
 
         public static int Mod(this int x, int m) => (x % m + m) % m;
+        public static uint Mod(this uint x, int m) => (uint)(((int)x % m + m) % m);
         public static double Mod(this double x, int m) => (x % m + m) % m;
         public static BigInteger Mod(this BigInteger x, int m) => (x % m + m) % m;
 
