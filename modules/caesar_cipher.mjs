@@ -1,7 +1,7 @@
-import { LatinAlphabetUpperCase, mod } from './common.mjs'
+import { mod, alphabetToSet } from './common.mjs'
 
 export class CaesarCipher {
-  constructor(shift = 3, alphabet = LatinAlphabetUpperCase) {
+  constructor(shift = 3, alphabet) {
     const minAlphabetLength = 2
     this.shift = shift
 
@@ -12,11 +12,7 @@ export class CaesarCipher {
     }
 
     this.alphabet = alphabet
-    this.alphabetSet = new Set()
-    for (const symbol of alphabet) {
-      this.alphabetSet.add(symbol)
-    }
-
+    this.alphabetSet = alphabetToSet(alphabet)
     if (alphabet.length != this.alphabetSet.size) {
       throw new RangeError('The alphabet must not contain duplicate symbols')
     }
