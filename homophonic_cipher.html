@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./static/style.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <title>Homophonic Cipher</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row text-center">
+        <h1>Homophonic Cipher</h1>
+      </div>
+
+      <div class="row">
+        <div class="col text-left">
+          <input
+            type="radio"
+            class="btn-check"
+            name="options"
+            id="encodeRadio"
+            autocomplete="off"
+            checked
+          />
+          <label class="btn btn-secondary" for="encodeRadio">Encode</label>
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="options"
+            id="decodeRadio"
+            autocomplete="off"
+          />
+          <label class="btn btn-secondary" for="decodeRadio">Decode</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 1em">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col" class="col-1 text-center align-middle">Symbol</th>
+              <th scope="col" class="col-auto align-middle">Frequencies</th>
+              <th scope="col" class="col-1 text-center align-middle">
+                <button
+                  id="clearFrequencyTableButton"
+                  type="button"
+                  class="btn btn-warning w-100"
+                >
+                  Clear
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="frequencyTable"></tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <input class="form-control" id="newSymbolInput" placeholder="A" />
+        </div>
+        <div class="col">
+          <input
+            class="form-control"
+            id="newFrequenciesInput"
+            placeholder="13,55,23"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-center">
+          <button
+            id="addFrequencyTableRowButton"
+            type="button"
+            class="btn btn-primary"
+          >
+            Add Row
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          class="alert alert-danger"
+          id="frequencyTableAlert"
+          role="alert"
+          hidden
+        ></div>
+      </div>
+
+      <div class="row" style="margin-top: 1em">
+        <label for="inputTextArea" class="form-label">Input</label>
+        <textarea class="form-control" id="inputTextArea" rows="3"></textarea>
+      </div>
+
+      <div class="row">
+        <label for="outputTextArea" class="form-label">Output</label>
+        <textarea
+          class="form-control"
+          id="outputTextArea"
+          rows="3"
+          readonly
+        ></textarea>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+      integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="./scripts/homophonic_cipher_scripts.mjs"
+    ></script>
+  </body>
+</html>
