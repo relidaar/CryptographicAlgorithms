@@ -1,4 +1,4 @@
-import { mod, alphabetToSet } from './common.mjs'
+import { mod, toSet } from './common.mjs'
 
 export class PolybiusCipher {
   constructor(alphabet) {
@@ -10,7 +10,7 @@ export class PolybiusCipher {
       )
     }
 
-    if (alphabet.length != alphabetToSet(alphabet).size) {
+    if (alphabet.length !== toSet(alphabet).size) {
       throw new RangeError('The alphabet must not contain duplicate symbols')
     }
 

@@ -1,4 +1,4 @@
-import { mod, alphabetToSet } from './common.mjs'
+import { mod, toSet } from './common.mjs'
 
 export class CaesarCipher {
   constructor(shift = 3, alphabet) {
@@ -12,8 +12,8 @@ export class CaesarCipher {
     }
 
     this.alphabet = alphabet
-    this.alphabetSet = alphabetToSet(alphabet)
-    if (alphabet.length != this.alphabetSet.size) {
+    this.alphabetSet = toSet(alphabet)
+    if (alphabet.length !== this.alphabetSet.size) {
       throw new RangeError('The alphabet must not contain duplicate symbols')
     }
   }

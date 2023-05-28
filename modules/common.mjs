@@ -5,9 +5,9 @@ const LatinAlphabetLowerCaseWithoutJ = 'abcdefghiklmnopqrstuvwxyz'
 
 const mod = (x, m) => ((x % m) + m) % m
 
-const alphabetToSet = (alphabet) => {
+const toSet = (list) => {
   const result = new Set()
-  for (const symbol of alphabet) {
+  for (const symbol of list) {
     result.add(symbol)
   }
   return result
@@ -19,5 +19,5 @@ export {
   LatinAlphabetUpperCaseWithoutJ,
   LatinAlphabetLowerCaseWithoutJ,
   mod,
-  alphabetToSet,
+  toSet,
 }

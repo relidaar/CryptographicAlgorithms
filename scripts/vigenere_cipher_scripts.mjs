@@ -1,5 +1,5 @@
 import { LatinAlphabetUpperCase } from '../modules/common.mjs'
-import { ViginereCipher } from '../modules/viginere_cipher.mjs'
+import { VigenereCipher } from '../modules/vigenere_cipher.mjs'
 import {
   InvalidAlphabetError,
   InvalidKeywordError,
@@ -7,7 +7,7 @@ import {
 
 const useEncoder = () => {
   try {
-    const encoder = new ViginereCipher(keywordInput.value, alphabetInput.value)
+    const encoder = new VigenereCipher(keywordInput.value, alphabetInput.value)
 
     const input = inputTextArea.value
     if (encodeRadio.checked) {

@@ -1,7 +1,7 @@
-import { alphabetToSet, mod } from './common.mjs'
+import { toSet, mod } from './common.mjs'
 import { InvalidAlphabetError, InvalidKeywordError } from './errors.mjs'
 
-export class ViginereCipher {
+export class VigenereCipher {
   constructor(keyword, alphabet) {
     const minAlphabetLength = 2
     const minKeywordLength = 2
@@ -13,9 +13,8 @@ export class ViginereCipher {
     }
 
     this.alphabet = alphabet
-    this.alphabetSet = alphabetToSet(alphabet)
-
-    if (alphabet.length < minAlphabetLength) {
+    this.alphabetSet = toSet(alphabet)
+    if (alphabet.length !== this.alphabetSet.size) {
       throw new InvalidAlphabetError(
         `The alphabet must not contain duplicate symbols`
       )
@@ -24,6 +23,12 @@ export class ViginereCipher {
     if (!keyword || keyword.Length < minKeywordLength) {
       throw new InvalidKeywordError(
         `The keyword must contain at least ${minKeywordLength} symbols`
+      )
+    }
+
+    if (keyword.length !== toSet(keyword).size) {
+      throw new InvalidKeywordError(
+        `The key must not contain duplicate symbols`
       )
     }
 
