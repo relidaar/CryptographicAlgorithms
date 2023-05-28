@@ -3,9 +3,12 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 
+[Github Pages Link](https://relidaar.github.io/CryptographicAlgorithms)
+·
 [Report Bug][project-issues-link]
 ·
 [Request Feature][project-issues-link]
+
 
 This project contains implementations of several symmetric/asymmetric cryptographic algorithms: from the ancient Caesar's cypher to the AES and RSA. 
 
