@@ -1,7 +1,6 @@
 ﻿# Cryptographic Algorithms
 
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
@@ -12,6 +11,14 @@
 This project contains implementations of several symmetric/asymmetric cryptographic algorithms: from the ancient Caesar's cypher to the AES and RSA. 
 
 ### Currently supported algorithms
+
+#### Substitution ciphers
+
+- Caesar Cipher
+- Polybius Cipher
+- Vigenere Cipher
+- Playfair Cipher
+- Homophonic Cipher
 
 ## Table of Contents
 
@@ -83,9 +90,6 @@ Project Link: [https://github.com/relidaar/CryptographicAlgorithms][project-link
 [contributors-shield]: https://img.shields.io/github/contributors/relidaar/CryptographicAlgorithms?style=for-the-badge
 [contributors-url]: https://github.com/relidaar/CryptographicAlgorithms/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/relidaar/CryptographicAlgorithms?style=for-the-badge
-[forks-url]: https://github.com/relidaar/CryptographicAlgorithms/network/members
-
 [issues-shield]: https://img.shields.io/github/issues/relidaar/CryptographicAlgorithms?style=for-the-badge
 [issues-url]: https://github.com/relidaar/CryptographicAlgorithms/issues
 
@@ -94,6 +98,3 @@ Project Link: [https://github.com/relidaar/CryptographicAlgorithms][project-link
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/oleksandr-sviatetskyi-45424b143/
-
-[dotnet-shield]: https://img.shields.io/badge/.NET_Core-6.0-brightgreen.svg?style=flat-square
-[dotnet-url]: https://dotnet.microsoft.com/download/dotnet/6.0
