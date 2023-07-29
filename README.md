@@ -26,6 +26,7 @@ This project contains implementations of several symmetric/asymmetric cryptograp
 
 - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
+- [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
@@ -36,6 +37,8 @@ This project contains implementations of several symmetric/asymmetric cryptograp
 ## Getting Started
 
 ### Prerequisites
+
+[![.NET Version][dotnet-shield]][dotnet-url]
 
 
 1. Clone the repo
